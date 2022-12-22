@@ -1,24 +1,17 @@
 const ESLintWebpackPlugin = require("eslint-webpack-plugin");
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+// const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
+
 module.exports = {
     mode: 'development',
     entry: './src/index.js',
-    devServer: {
-        static: './dist',
-        port: 8080,
-        // contentBase: './dist',
-        hot: true,
-        // stats: {
-        //     children: false,
-        //     maxModules: 0
-        // }
-    },
     plugins: [
-        new ESLintWebpackPlugin(),
-        new HtmlWebpackPlugin({title: 'Development'})
+        new ESLintWebpackPlugin()
     ],
     output: {
-        filename: 'main.js'
+        filename: 'main.js',
+        path: path.resolve(__dirname, 'dist'),
+        clean: true
     },
     module: {
         // rules: [
@@ -29,5 +22,5 @@ module.exports = {
         //     }
         // ]
     },
-    devtool: 'inline-source-map',
+
 };
